@@ -15,9 +15,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     def __init__(self, model: Type[ModelType]):
         """
         CRUD object with default methods to Create, Read, Update, Delete (CRUD).
-
         **Parameters**
-
         * `model`: A SQLAlchemy model class
         * `schema`: A Pydantic model (schema) class
         """
@@ -59,7 +57,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         db.refresh(db_obj)
         return db_obj
 
-    def remove(self, db: Session, *, id: int) -> ModelType:
+    def remove(self, db: Session, *, id: int) -> Optional[ModelType]:
         obj = db.query(self.model).get(id)
         db.delete(obj)
         db.commit()

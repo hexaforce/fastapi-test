@@ -6,7 +6,6 @@ from app.db.session import SessionLocal
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
 max_tries = 60 * 5  # 5 minutes
 wait_seconds = 1
 
